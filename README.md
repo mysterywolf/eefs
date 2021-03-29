@@ -1,4 +1,4 @@
-eefs
+EEFS for RT-Thread
 ====
 
 EEPROM File System
