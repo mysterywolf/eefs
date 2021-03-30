@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
                 OutputMemoryMap(&FileSystem, CommandLineOptions.MapFilename);
 
             /* write the output file */
-            if ((OutputFilePointer = fopen(CommandLineOptions.OutputFilename, "w"))) {
+            if ((OutputFilePointer = fopen(CommandLineOptions.OutputFilename, "wb"))) {
 
                 /* Kludge to save off the current values of these variables before we byte swap the file system */
                 uint32      FreeMemoryOffset = FileSystem.FileAllocationTable->Header.FreeMemoryOffset;
@@ -172,7 +172,7 @@ void AddFile(FileSystem_t *FileSystem, char *InputFilename, char *EEFSFilename, 
 
         if (IsDuplicateFilename(FileSystem, EEFSFilename) == FALSE) {
 
-            if ((InputFilePointer = fopen(InputFilename, "r"))) {
+            if ((InputFilePointer = fopen(InputFilename, "rb"))) {
 
                 FileSize = Fsize(InputFilename);
                 MaxFileSize = ROUND_UP((FileSize + SpareBytes), 4); /* round the MaxFileSize up to the next 4 byte boundary */
